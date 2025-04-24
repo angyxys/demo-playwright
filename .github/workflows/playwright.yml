@@ -13,6 +13,12 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+    - name: Create env file
+      run: |
+        touch .env
+        echo UI_URL=${{ secrets.UI_URL }} >> .env
+        echo UI_USERNAME=${{ secrets.UI_USERNAME }} >> .env
+        echo UI_PASSWORD=${{ secrets.UI_PASSWORD }} >> .env
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
